@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-tech: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-gold-50: #fdfcf9;
+  --color-gold-100: #f5eedf;
+  --color-gold-200: #eadbbf;
+  --color-gold-300: #dec89f;
+  --color-gold-400: #c5a059;
+  --color-gold-500: #a67f3c;
+  --color-gold-600: #88622b;
+  --color-gold-700: #6a491f;
+  --color-gold-800: #4c3214;
+  --color-gold-900: #331f0a;
+
+  --color-charcoal-50: #f7f7f7;
+  --color-charcoal-100: #eeeeef;
+  --color-charcoal-200: #dadade;
+  --color-charcoal-300: #b9b9c0;
+  --color-charcoal-400: #9393a1;
+  --color-charcoal-500: #717182;
+  --color-charcoal-600: #575767;
+  --color-charcoal-700: #3f3f4e;
+  --color-charcoal-800: #2a2a35;
+  --color-charcoal-900: #1b1b22;
+  --color-charcoal-950: #0f0f0f;
+
+  --color-ivory: #e5e0d8;
+  --color-olive-light: #8e907a;
+  --color-olive: #5e6144;
+  --color-olive-dark: #3c3e2b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-charcoal-950);
+    color: var(--color-ivory);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom high-end scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f0f0f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c5a05930;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c5a059;
+  }
+}
+
+@layer utilities {
+  .grain { 
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04; pointer-events: none;
+  }
+
+  .gold-border {
+    border-color: #c5a059;
+  }
+
+  .gold-text {
+    color: #c5a059;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .subtle-grain {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+    background-size: 24px 24px;
+    background-position: -12px -12px;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #f4ecdb 0%, #d6be96 50%, #b2854b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-border-glow {
+    box-shadow: 0 0 15px rgba(178, 133, 75, 0.1);
+    border: 1px solid rgba(178, 133, 75, 0.2);
+  }
+
+  .gold-border-glow:hover {
+    box-shadow: 0 0 25px rgba(178, 133, 75, 0.25);
+    border: 1px solid rgba(178, 133, 75, 0.45);
+  }
+
+  .glass-card {
+    background: rgba(18, 18, 20, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-gold {
+    background: rgba(18, 18, 20, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(178, 133, 75, 0.12);
+  }
+}
+
+/* Custom animations and glow effects */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.1); }
+}
+
+@keyframes spin-very-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 12s ease-in-out infinite;
+}
+
+.animate-spin-very-slow {
+  animation: spin-very-slow 40s linear infinite;
+}
+
